@@ -1,0 +1,15 @@
+body {
+  font-family: sans-serif;
+  outline-style: 1px inset;
+}
+h1 {
+  text-align: center;
+}
+.border-color {
+  color: black;
+}
+.new-day {
+  border: 1px solid;
+  margin: 0 auto;
+  padding: 1px;
+}
