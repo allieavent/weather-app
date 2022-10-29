@@ -55,5 +55,4 @@ function showTemp(response) {
   let tempChange = document.querySelector("#current-temp");
   tempChange.innerHTML = temperature;
 }
-console.log(showTemp);
 axios.get(`${apiUrl}`).then(`${showTemp}`);
