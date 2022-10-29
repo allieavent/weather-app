@@ -56,3 +56,13 @@ function showTemp(response) {
   tempChange.innerHTML = temperature;
 }
 axios.get(`${apiUrl}`).then(`${showTemp}`);
+
+function youAreHere(position) {
+  let apiKey = "53f3bc1f5d348c44be3e3754c7185573";
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(showTemperature);
+}
+navigator.geolocation.getCurrentPosition(youAreHere);
