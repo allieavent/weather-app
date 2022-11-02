@@ -1,15 +1,20 @@
 body {
   font-family: sans-serif;
   outline-style: 1px inset;
+  background: #ececec;
 }
 h1 {
   text-align: center;
 }
 .border-color {
-  color: black;
+  color: #142d4c;
 }
 .new-day {
   border: 1px solid;
   margin: 0 auto;
   padding: 1px;
+}
+.pretty-button {
+  accent-color: white;
+  background-color: #385170;
 }
