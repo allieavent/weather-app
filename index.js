@@ -71,3 +71,5 @@ function youAreHere(position) {
   axios.get(`${apiUrl}`).then(`${showTemp}`);
 }
 navigator.geolocation.getCurrentPosition(youAreHere);
+let currentLocation = document.querySelector("#current-location");
+currentLocation.addEventListener("click", youAreHere);
