@@ -13,6 +13,12 @@ function date() {
   let day = days[now.getDay()];
   let dayHour = now.getHours();
   let dayMinute = now.getMinutes();
+  if (dayMinute < 10) {
+    dayMinute = "0" + dayMinute;
+  }
+  if (dayHour < 10) {
+    dayHour = "0" + dayHour;
+  }
   let weekDay = document.querySelector("#current-date");
   weekDay.innerHTML = `${day} ${dayHour}:${dayMinute}`;
 }
