@@ -63,13 +63,17 @@ function showTemp(response) {
 }
 axios.get(`${apiUrl}`).then(`${showTemp}`);
 
-function youAreHere(position) {
+function forNavigator(position) {
   let apiKey = "53f3bc1f5d348c44be3e3754c7185573";
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(`${apiUrl}`).then(`${showTemp}`);
 }
-navigator.geolocation.getCurrentPosition(youAreHere);
+
+function youAreHere() {
+  navigator.geolocation.getCurrentPosition(forNavigator);
+}
+
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", youAreHere);
