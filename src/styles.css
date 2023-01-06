@@ -8,6 +8,13 @@ h1 {
   font-weight: 800;
 }
 .weather-app {
+  padding: 20px;
+  border: 1px soild gray;
+  border-radius: 5px;
+}
+.weather-app-wrapper {
+  max-width: 600px;
+  margin: 30px auto;
 }
 .border-color {
   color: #142d4c;
