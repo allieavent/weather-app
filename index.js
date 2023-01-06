@@ -25,6 +25,19 @@ function date() {
 weekDay.addEventListener("submit", date);
 date(now);
 
+let apiKey = "53f3bc1f5d348c44be3e3754c7185573";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${search}$appid=${apiKey}&units=metric`;
+function showTemp(response) {
+  console.log(response.data.main);
+  let city = response.data.name;
+  let temperature = Math.round(response.data.main.temp);
+  let cityChange = document.querySelector("#city-name");
+  cityChange.innerHTML = city;
+  let tempChange = document.querySelector("#current-temp");
+  tempChange.innerHTML = temperature;
+}
+
+axios.get(`${apiUrl}`).then(`${showTemp}`);
 function search(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#text-input");
@@ -50,18 +63,6 @@ function showFahrenheit(event) {
 }
 let fahrenheit = document.querySelector("#fahrenheit-temp");
 fahrenheit.addEventListener("click", showFahrenheit);
-
-let apiKey = "53f3bc1f5d348c44be3e3754c7185573";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${search}$appid=${apiKey}&units=metric`;
-function showTemp(response) {
-  let city = response.data.name;
-  let temperature = Math.round(response.data.main.temp);
-  let cityChange = document.querySelector("#city-name");
-  cityChange.innerHTML = city;
-  let tempChange = document.querySelector("#current-temp");
-  tempChange.innerHTML = temperature;
-}
-axios.get(`${apiUrl}`).then(`${showTemp}`);
 
 function forNavigator(position) {
   let apiKey = "53f3bc1f5d348c44be3e3754c7185573";
