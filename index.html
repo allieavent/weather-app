@@ -16,68 +16,72 @@
 
 <body>
     <div class="container">
-        <h1>Weather App</h1>
-        <div class="row">
-            <form class="col-5" id="search-form">
-                <input type="search" placeholder="Enter city name here" id="text-input" />
-            </form>
-            <div class="col">
-                <input type="Submit" id="pretty-button" />
-            </div>
-            <div class="col">
-                <input name="form" type="Submit" value="You Are Here" id="pretty-button" />
-            </div>
-            <div class="col-2">
-                <h2 id="current-temp">45°</h2>
-            </div>
-            <div class="col-1">
-                <button type="button" class="btn btn-secondary" id="fahrenheit-temp">°F</button>
-            </div>
-            <div class="col-1">
-                <button type="button" class="btn btn-secondary" id="celcius-temp">°C</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <h2 id="city-name">Atlanta</h2>
-            </div>
-            <div class="col-2">
-                <h4>Date:</h4>
-            </div>
-            <div class="col-3">
-                <h4 id="current-date">Enter Date Here</h4>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h4>Dew Point:</h4>
+        <div class="weather-app-wrapper">
+            <div class="weather-app">
+                <h1>Weather App</h1>
+                <div class="row">
+                    <form class="col-5" id="search-form">
+                        <input type="search" placeholder="Enter city name here" id="text-input" />
+                    </form>
+                    <div class="col">
+                        <input type="Submit" id="pretty-button" />
+                    </div>
+                    <div class="col">
+                        <input name="form" type="Submit" value="You Are Here" id="pretty-button" />
+                    </div>
+                    <div class="col-2">
+                        <h2 id="current-temp">45°</h2>
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="btn btn-secondary" id="fahrenheit-temp">°F</button>
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="btn btn-secondary" id="celcius-temp">°C</button>
+                    </div>
                 </div>
-                <div class="col">
-                    °F/°C
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h4>Humidity:</h4>
-                </div>
-                <div class="col">
-                    %
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h4 class="new-day" id="todays-weather">Today ❄️ 30°F</h4>
-                </div>
-                <div class="col">
-                    <h4 class="new-day" id="tomorrows-weather">2 Days ☀️ 36°F</h4>
-                </div>
-                <div class="col">
-                    <h4 class="new-day" id="three-days-out">3 Days 🌧 44°F</h4>
-                </div>
-                <div class="col">
-                    <h4 class="new-day" id="four-days-out">4Days 🌦 40°F</h4>
-                </div>
-                <div class="col">
-                    <h4 class="new-day" id="five-days-out">5 Days 🌬 35°F</h4>
+                <div class="row">
+                    <div class="col-4">
+                        <h2 id="city-name">Atlanta</h2>
+                    </div>
+                    <div class="col-2">
+                        <h4>Date:</h4>
+                    </div>
+                    <div class="col-3">
+                        <h4 id="current-date">Enter Date Here</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h4>Dew Point:</h4>
+                        </div>
+                        <div class="col">
+                            °F/°C
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h4>Humidity:</h4>
+                        </div>
+                        <div class="col">
+                            %
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="new-day" id="todays-weather">Today ❄️ 30°F</h4>
+                        </div>
+                        <div class="col">
+                            <h4 class="new-day" id="tomorrows-weather">2 Days ☀️ 36°F</h4>
+                        </div>
+                        <div class="col">
+                            <h4 class="new-day" id="three-days-out">3 Days 🌧 44°F</h4>
+                        </div>
+                        <div class="col">
+                            <h4 class="new-day" id="four-days-out">4Days 🌦 40°F</h4>
+                        </div>
+                        <div class="col">
+                            <h4 class="new-day" id="five-days-out">5 Days 🌬 35°F</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
