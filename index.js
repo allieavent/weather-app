@@ -1,5 +1,5 @@
+let now = new Date();
 function date() {
-  let now = new Date();
   let days = [
     "Sunday",
     "Monday",
