@@ -25,8 +25,8 @@ function date() {
 weekDay.addEventListener("submit", date);
 date(now);
 
-let apiKey = "53f3bc1f5d348c44be3e3754c7185573";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${search}$appid=${apiKey}&units=metric`;
+let apiKey = "714adc71725e90o5t54ecfb6b5e13103";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityReturn}&key=${apiKey}&units={metric}`;
 function showTemp(response) {
   console.log(response.data.main);
   let city = response.data.name;
@@ -37,7 +37,6 @@ function showTemp(response) {
   tempChange.innerHTML = temperature;
 }
 
-axios.get(`${apiUrl}`).then(`${showTemp}`);
 function search(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#text-input");
@@ -46,6 +45,7 @@ function search(event) {
 }
 let citySearch = document.querySelector("#search-form");
 citySearch.addEventListener("submit", search);
+axios.get(`${apiUrl}`).then(`${showTemp}`);
 
 function showCelcius(event) {
   event.preventDefault();
