@@ -37,14 +37,14 @@ function showTemp(response) {
   tempChange.innerHTML = temperature;
 }
 
-function search(event) {
+function cityReturn(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#text-input");
   let cityName = document.querySelector("#city-name");
   cityName.innerHTML = `${searchInput.value}`;
 }
 let citySearch = document.querySelector("#search-form");
-citySearch.addEventListener("submit", search);
+citySearch.addEventListener("submit", cityReturn);
 axios.get(`${apiUrl}`).then(`${showTemp}`);
 
 function showCelcius(event) {
