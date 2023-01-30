@@ -22,7 +22,6 @@ function date() {
   let weekDay = document.querySelector("#current-date");
   weekDay.innerHTML = `${day} ${dayHour}:${dayMinute}`;
 }
-weekDay.addEventListener("submit", date);
 date(now);
 
 let apiKey = "714adc71725e90o5t54ecfb6b5e13103";
