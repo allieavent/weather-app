@@ -24,8 +24,6 @@ function date() {
 }
 date(now);
 
-let apiKey = "714adc71725e90o5t54ecfb6b5e13103";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityReturn}&key=${apiKey}&units={metric}`;
 function showTemp(response) {
   let temperatureElement = document.querySelector("#current-temp");
   let cityElement = document.querySelector("#city-name");
@@ -47,12 +45,15 @@ function showTemp(response) {
 function cityReturn(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#text-input");
-  let cityName = document.querySelector("#city-name");
-  cityName.innerHTML = `${searchInput.value}`;
+  citySearch(searchInput.value);
+}
+function searchCity(city) {
+  let apiKey = "714adc71725e90o5t54ecfb6b5e13103";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units={metric}`;
+  axios.get(`${apiUrl}`).then(`${showTemp}`);
 }
 let citySearch = document.querySelector("#search-form");
-citySearch.addEventListener("submit", cityReturn);
-axios.get(`${apiUrl}`).then(`${showTemp}`);
+citySearch.addEventListener("click", cityReturn);
 
 function showCelcius(event) {
   event.preventDefault();
