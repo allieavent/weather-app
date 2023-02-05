@@ -42,6 +42,51 @@ function showTemp(response) {
   );
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector(`#forecast`);
+  let forecastHTML = `<div class="row">`;
+  forecastHTML =
+    forecastHTML +
+    `
+  <div class="col">
+                            <h4 class="new-day" id="todays-weather">Tomorrow<img
+                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                                    alt="Clear Skies" width="36" /> 30°F</h4>
+                        </div>`;
+  forecastHTML =
+    forecastHTML +
+    `<div class="col">
+                            <h4 class="new-day" id="tomorrows-weather">2 Days <img
+                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                                    alt="Clear Skies" width="36" /> 36°F</h4>
+                        </div>`;
+  forecastHTML =
+    forecastHTML +
+    `
+                         <div class="col">
+                            <h4 class="new-day" id="three-days-out">3 Days <img
+                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                                    alt="Clear Skies" width="36" /> 44°F</h4>
+                        </div>`;
+  forecastHTML =
+    forecastHTML +
+    `
+                        <div class="col">
+                            <h4 class="new-day" id="four-days-out">4Days <img
+                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                                    alt="Clear Skies" width="36" /> 40°F</h4>
+                        </div>`;
+  forecastHTML =
+    forecastHTML +
+    `<div class="col">
+                            <h4 class="new-day" id="five-days-out">5 Days <img
+                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                                    alt="Clear Skies" width="36" /> 35°F</h4>
+                        </div>`;
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function cityReturn(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#text-input");
