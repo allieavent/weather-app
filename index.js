@@ -40,9 +40,12 @@ function showTemp(response) {
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.weather[0].icon_url}.png`
   );
+
+  getForecast(response.data.city);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector(`#forecast`);
   let forecastHTML = `<div class="row">`;
   forecastHTML =
@@ -85,6 +88,12 @@ function displayForecast() {
                         </div>`;
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+function getForecast(city) {
+  console.log(city);
+  let apiKey = "714adc71725e90o5t54ecfb6b5e13103";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function cityReturn(event) {
