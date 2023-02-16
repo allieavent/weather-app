@@ -46,28 +46,31 @@ function showTemp(response) {
 
 function displayForecast(response) {
   console.log(response.data);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector(`#forecast`);
   let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  forecast.forEach(function (forecastDay) {
   forecastHTML =
     forecastHTML +
     `
   <div class="col">
-                            <h4 class="new-day" id="todays-weather">Tomorrow<img
-                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                            <h4 class="new-day" id="tomorrows-weather">${days}<img
+                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.weather[1].icon}.png"
                                     alt="Clear Skies" width="36" /> 30°F</h4>
                         </div>`;
   forecastHTML =
     forecastHTML +
     `<div class="col">
-                            <h4 class="new-day" id="tomorrows-weather">2 Days <img
-                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                            <h4 class="new-day" id="two-days-out">${days}<img
+                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.weather[2].icon}.png"
                                     alt="Clear Skies" width="36" /> 36°F</h4>
                         </div>`;
   forecastHTML =
     forecastHTML +
     `
                          <div class="col">
-                            <h4 class="new-day" id="three-days-out">3 Days <img
+                            <h4 class="new-day" id="three-days-out">${days}<img
                                     src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
                                     alt="Clear Skies" width="36" /> 44°F</h4>
                         </div>`;
@@ -75,19 +78,19 @@ function displayForecast(response) {
     forecastHTML +
     `
                         <div class="col">
-                            <h4 class="new-day" id="four-days-out">4Days <img
+                            <h4 class="new-day" id="four-days-out">${days}<img
                                     src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
                                     alt="Clear Skies" width="36" /> 40°F</h4>
                         </div>`;
   forecastHTML =
     forecastHTML +
     `<div class="col">
-                            <h4 class="new-day" id="five-days-out">5 Days <img
+                            <h4 class="new-day" id="five-days-out">${days}<img
                                     src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
                                     alt="Clear Skies" width="36" /> 35°F</h4>
                         </div>`;
   forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
+  forecastElement.innerHTML = forecastHTML;}
 }
 function getForecast(city) {
   console.log(city);
