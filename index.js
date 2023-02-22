@@ -44,20 +44,25 @@ function showTemp(response) {
   getForecast(response.data.city);
 }
 
+function formatDay(time) {
+  let date = new Date(time * 1000);
+  let days =["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return day
+}
+
 function displayForecast(response) {
-  console.log(response.data);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector(`#forecast`);
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
   forecast.forEach(function (forecastDay) {
   forecastHTML =
     forecastHTML +
     `
   <div class="col">
-                            <h4 class="new-day" id="tomorrows-weather">${days}<img
+                            <h4 class="new-day" id="tomorrows-weather">${formatDay(forecastDay.time)}<img
                                     src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.weather[1].icon}.png"
-                                    alt="Clear Skies" width="36" /> 30°F</h4>
+                                    alt="Clear Skies" width="36" />${forecastDay.temperature.maximum}°C</h4>
                         </div>`;
   forecastHTML =
     forecastHTML +
@@ -66,34 +71,10 @@ function displayForecast(response) {
                                     src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.weather[2].icon}.png"
                                     alt="Clear Skies" width="36" /> 36°F</h4>
                         </div>`;
-  forecastHTML =
-    forecastHTML +
-    `
-                         <div class="col">
-                            <h4 class="new-day" id="three-days-out">${days}<img
-                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
-                                    alt="Clear Skies" width="36" /> 44°F</h4>
-                        </div>`;
-  forecastHTML =
-    forecastHTML +
-    `
-                        <div class="col">
-                            <h4 class="new-day" id="four-days-out">${days}<img
-                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
-                                    alt="Clear Skies" width="36" /> 40°F</h4>
-                        </div>`;
-  forecastHTML =
-    forecastHTML +
-    `<div class="col">
-                            <h4 class="new-day" id="five-days-out">${days}<img
-                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
-                                    alt="Clear Skies" width="36" /> 35°F</h4>
-                        </div>`;
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;}
 }
 function getForecast(city) {
-  console.log(city);
   let apiKey = "714adc71725e90o5t54ecfb6b5e13103";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
