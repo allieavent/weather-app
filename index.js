@@ -66,9 +66,9 @@ function displayForecast(response) {
                                         src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
                                           forecastDay.condition.icon
                                         }.png"
-                                        alt="Clear Skies" width="36" />${
+                                        alt="Clear Skies" width="36" />${Math.round(
                                           forecastDay.temperature.maximum
-                                        }°C</h4>
+                                        )}°C</h4>
                             </div>`;
   });
   forecastHTML = forecastHTML + `</div>`;
@@ -76,7 +76,7 @@ function displayForecast(response) {
 }
 function getForecast(city) {
   let apiKey = "714adc71725e90o5t54ecfb6b5e13103";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units={metric}`;
   axios.get(apiUrl).then(displayForecast);
 }
 
