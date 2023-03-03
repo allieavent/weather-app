@@ -31,14 +31,14 @@ function showTemp(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
-  cityElement.innerHTML = response.data.name;
-  descriptionElement.innerHTML = response.data.weather[0].description;
-  humidityElement.innerHTML = response.data.main.humidity;
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  cityElement.innerHTML = response.data.city;
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   iconElement.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.weather[0].icon_url}.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
 
   getForecast(response.data.city);
@@ -46,9 +46,9 @@ function showTemp(response) {
 
 function formatDay(time) {
   let date = new Date(time * 1000);
-  let days =["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[date.getDay()];
-  return day
+  return day;
 }
 
 function displayForecast(response) {
@@ -56,23 +56,23 @@ function displayForecast(response) {
   let forecastElement = document.querySelector(`#forecast`);
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay) {
-  forecastHTML =
-    forecastHTML +
-    `
-  <div class="col">
-                            <h4 class="new-day" id="tomorrows-weather">${formatDay(forecastDay.time)}<img
-                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.weather[1].icon}.png"
-                                    alt="Clear Skies" width="36" />${forecastDay.temperature.maximum}°C</h4>
-                        </div>`;
-  forecastHTML =
-    forecastHTML +
-    `<div class="col">
-                            <h4 class="new-day" id="two-days-out">${days}<img
-                                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.weather[2].icon}.png"
-                                    alt="Clear Skies" width="36" /> 36°F</h4>
-                        </div>`;
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col">
+                                <h4 class="new-day" id="tomorrows-weather">${formatDay(
+                                  forecastDay.time
+                                )}<img
+                                        src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                                          forecastDay.condition.icon
+                                        }.png"
+                                        alt="Clear Skies" width="36" />${
+                                          forecastDay.temperature.maximum
+                                        }°C</h4>
+                            </div>`;
+  });
   forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;}
+  forecastElement.innerHTML = forecastHTML;
 }
 function getForecast(city) {
   let apiKey = "714adc71725e90o5t54ecfb6b5e13103";
@@ -83,15 +83,15 @@ function getForecast(city) {
 function cityReturn(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#text-input");
-  citySearch(searchInput.value);
+  searchCity(searchInput.value);
 }
 function searchCity(city) {
   let apiKey = "714adc71725e90o5t54ecfb6b5e13103";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units={metric}`;
-  axios.get(`${apiUrl}`).then(`${showTemp}`);
+  axios.get(`${apiUrl}`).then(showTemp);
 }
 let citySearch = document.querySelector("#search-form");
-citySearch.addEventListener("click", cityReturn);
+citySearch.addEventListener("submit", cityReturn);
 
 function showCelcius(event) {
   event.preventDefault();
