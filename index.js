@@ -66,7 +66,7 @@ function displayForecast(response) {
                                         src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
                                           forecastDay.condition.icon
                                         }.png"
-                                        alt="Clear Skies" width="36" />${Math.round(
+                                        alt="Clear Skies" width="30" />${Math.round(
                                           forecastDay.temperature.maximum
                                         )}°C</h4>
                             </div>`;
